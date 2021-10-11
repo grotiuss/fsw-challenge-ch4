@@ -59,7 +59,10 @@ function reset() {
     cScissors.style.removeProperty("background-color");
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0f9a011 (Editing html and adding js file)
 function showHasil(result) {
     matchResultBox.style.removeProperty("visibility")
     if (result == "draw") {
