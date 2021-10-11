@@ -59,6 +59,7 @@ function reset() {
     cScissors.style.removeProperty("background-color");
 }
 
+
 function showHasil(result) {
     matchResultBox.style.removeProperty("visibility")
     if (result == "draw") {
