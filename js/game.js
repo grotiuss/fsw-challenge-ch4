@@ -104,6 +104,46 @@ var player = new Player()
 var computer = new Computer()
 
 function result(){
+    var a = player.tool
+    var b = computer.tool
+    //choosing the winner
+    if(a === 'rock'){
+        if (b === 'rock'){
+            var hasil = 'draw'
+        } else if (b === 'paper'){
+            var hasil = 'lose'
+        } else {
+            var hasil = 'win'
+        }
+    } else if(a === 'paper'){
+        if (b === 'rock'){
+            var hasil = 'win'
+        } else if (b === 'paper'){
+            var hasil = 'draw'
+        } else {
+            var hasil = 'lose'
+        }
+    } else{
+        if (b === 'rock'){
+            var hasil = 'lose'
+        } else if (b === 'paper'){
+            var hasil = 'win'
+        } else {
+            var hasil = 'draw'
+        }
+    }
+    console.log(hasil)
+    showingResult(hasil)
+}
+
+function showingResult(hasil){
+    if(hasil== 'win'){
+        matchResult.children[0].innerHTML = 'PLAYER <br> WIN'
+    } else if(hasil == 'lose'){
+        matchResult.children[0].innerHTML = 'COMPUTER <br> WIN'
+    } else {
+        matchResult.children[0].innerHTML = 'DRAW'
+    }
     versus.style.display = 'none'
     matchResult.style.visibility = 'visible'
 }
