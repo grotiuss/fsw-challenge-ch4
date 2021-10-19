@@ -70,6 +70,7 @@ function showHasil(result) {
     }
 }
 
+
 function chooseRock() {
     if (pRock.style.backgroundColor == '#C4C4C4' || pPaper.style.backgroundColor == '#C4C4C4' || pScissors.style.backgroundColor == '#C4C4C4') {
         refreshText.removeProperty('visibility')
@@ -81,6 +82,25 @@ function chooseRock() {
         let result = playerVsComp(player, computer)
         showHasil(result)
     }
+
+function showingResult(hasil){
+    if(hasil== 'win'){
+        matchResult.children[0].innerHTML = 'PLAYER <br> WIN'
+        matchResult.style.backgroundColor = '#4C9654'
+        matchResult.style.paddingTop = ''
+        matchResult.style.visibility = 'visible'
+    } else if(hasil == 'lose'){
+        matchResult.children[0].innerHTML = 'COMPUTER <br> WIN'
+        matchResult.style.backgroundColor = '#4C9654'
+        matchResult.style.paddingTop = ''
+        matchResult.style.visibility = 'visible'
+    } else {
+        matchResult.children[0].innerHTML = 'DRAW'
+        matchResult.style.backgroundColor = '#035B0C'
+        matchResult.style.paddingTop = '1.5em'
+        matchResult.style.visibility = 'visible'
+    }
+    versus.style.display = 'none'
 }
 
 function choosePaper() {
