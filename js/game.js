@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 var refresh = document.getElementById('reset')
 var versus = document.getElementById('versus')
 var matchResult = document.getElementById('result')
@@ -172,4 +170,3 @@ function reset(){
     versus.style.display = ''
     matchResult.style.visibility = 'hidden'
 }
->>>>>>> 0fe92d9 (editing showingResult() function)
