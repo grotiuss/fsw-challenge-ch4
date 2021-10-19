@@ -139,13 +139,21 @@ function result(){
 function showingResult(hasil){
     if(hasil== 'win'){
         matchResult.children[0].innerHTML = 'PLAYER <br> WIN'
+        matchResult.style.backgroundColor = '#4C9654'
+        matchResult.style.paddingTop = ''
+        matchResult.style.visibility = 'visible'
     } else if(hasil == 'lose'){
         matchResult.children[0].innerHTML = 'COMPUTER <br> WIN'
+        matchResult.style.backgroundColor = '#4C9654'
+        matchResult.style.paddingTop = ''
+        matchResult.style.visibility = 'visible'
     } else {
         matchResult.children[0].innerHTML = 'DRAW'
+        matchResult.style.backgroundColor = '#035B0C'
+        matchResult.style.paddingTop = '1.5em'
+        matchResult.style.visibility = 'visible'
     }
     versus.style.display = 'none'
-    matchResult.style.visibility = 'visible'
 }
 
 function config(){
