@@ -1,109 +1,124 @@
+var refresh = document.getElementById('reset')
+var versus = document.getElementById('versus')
+var matchResult = document.getElementById('result')
+
+function notEmpty() {
+    refresh.children[0].style.width = '8em'
+    console.log('Refresh button was clicked')
+}
+
 class Participant {
-    constructor(){
+    constructor() {
         this.name = this.constructor.name
+        this.selection = undefined
+        this.tool = undefined
+    }
+
+    selected() {
+        var tool = document.getElementById(this.selection)
+        tool.style.backgroundColor = '#C4C4C4'
+        tool.style.borderRadius = '25px'
+    }
+
+    reset() {
+        var tool = document.getElementById(this.selection)
+        refresh.children[0].style.width = '5em'
+        if (tool) {
+            tool.style.backgroundColor = ''
+            tool.style.borderRadius = ''
+        }
+        this.selection = undefined
+        this.tool = undefined
     }
 }
 
 class Player extends Participant {
-    constructor(){
+    constructor() {
         super()
     }
 
     chooseRock() {
-        if(this.selection == null){
-            this.selection = 'rock'
-            toolSelected('r-player')
+        if (!this.selection) {
+            this.selection = 'r-player'
+            this.tool = 'rock'
+            this.selected()
             config()
+        } else {
+            notEmpty()
+            console.log('Object is not empty')
         }
     }
 
     choosePaper() {
-        if(this.selection == null){
-            this.selection = 'paper'
-            toolSelected('p-player')
+        if (!this.selection) {
+            this.selection = 'p-player'
+            this.tool = 'paper'
+            this.selected()
             config()
+        } else {
+            notEmpty()
+            console.log('Object is not empty')
         }
     }
 
     chooseScissor() {
-        if(this.selection == null){
-            this.selection = 'scissor'
-            toolSelected('s-player')
+        if (!this.selection) {
+            this.selection = 's-player'
+            this.tool = 'scissor'
+            this.selected()
             config()
+        } else {
+            notEmpty()
+            console.log('Object is not empty')
         }
-    }
-
-    wasSelected() {
-        console.log(`${this.selection} was selected by the Player`)
     }
 }
 
 class Computer extends Participant {
-    constructor(){
+    constructor() {
         super()
     }
-    
-    choosingTool(){
+
+    randomToolSelection() {
         const pil = Math.floor(Math.random() * 3);
-        switch (pil){
+        switch (pil) {
             case 0:
-                this.selection = 'rock'
-                toolSelected('r-com')
+                this.tool = 'rock'
+                this.selection = 'r-com'
                 break
             case 1:
-                this.selection = 'paper'
-                toolSelected('p-com')
+                this.tool = 'paper'
+                this.selection = 'p-com'
                 break
             case 2:
-                this.selection = 'scissor'
-                toolSelected('s-com')
+                this.tool = 'scissor'
+                this.selection = 's-com'
                 break
         }
-        console.log(`${this.selection} was selected by the Computer`)
     }
 }
 
-var player  = new Player();
-var computer = new Computer
-console.log(player.name)
-console.log(computer.name)
+// var player = new Player()
 
-function toolSelected(toolId) {
-    var toolSelected = document.getElementById(toolId)
-    toolSelected.style.backgroundColor= '#C4C4C4'
-    toolSelected.style.borderRadius = '25px'
-}
+var player = new Player()
+var computer = new Computer()
 
-function result(a,b){
-    if (a == 'rock'){
-        if (b == 'rock'){
-            return 'draw'
-        } else if(b == 'paper'){
-            return 'lose'
-        } else{
-            return 'win'
-        }
-    } else if (a == 'paper'){
-        if (b == 'rock'){
-            return 'win'
-        } else if(b == 'paper'){
-            return 'draw'
-        } else{
-            return 'lose'
-        }
-    } else{
-        if (b == 'rock'){
-            return 'lose'
-        } else if(b == 'paper'){
-            return 'win'
-        } else{
-            return 'draw'
-        }
-    }
+function result(){
+    versus.style.display = 'none'
+    matchResult.style.visibility = 'visible'
 }
 
 function config(){
-    player.wasSelected()
-    computer.choosingTool()
-    console.log(result(player.selection, computer.selection))
+    console.log("Computer's turn")
+    computer.randomToolSelection()
+    computer.selected()
+    result()
+    
+}
+
+function reset(){
+    player.reset()
+    computer.reset()
+    versus.style.display = ''
+    matchResult.style.visibility = 'hidden'
 }

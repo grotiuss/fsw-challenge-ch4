@@ -15,7 +15,11 @@
 
     <style>
         #result{
-            display: none;
+            visibility: hidden;
+            background-color: #4C9654;
+            transform: rotate(-20deg);
+            text-align: center;
+            color: white;
         }
 
         #versus{
@@ -79,9 +83,11 @@
                     </button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 <h1 id='versus'>VS</h1>
-                <div id='result'></div>
+                <div id='result'>
+                    <h1>PARTICIPANT <br> WIN</h1>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class='tool-bg'>
@@ -91,13 +97,18 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-between text-center">
+        <div class="row text-center">
             <div class="col-md-4">
                 <div class='tool-bg'>
                     <button id='s-player' class='tool-btn' onclick=player.chooseScissor()>
                         <img src="/assets/gunting.png" alt="" class='tool'>
                     </button>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <button class = 'tool-btn' id='reset' onclick=reset()>
+                    <img src="/assets/refresh.png" alt="refresh" style="width: 5em;">
+                </button>
             </div>
             <div class="col-md-4">
                 <div class='tool-bg'>
